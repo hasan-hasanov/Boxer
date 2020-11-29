@@ -5,9 +5,7 @@
         public ScriptVerb()
         {
             Name = "script";
-
-            //TODO: Improve help
-            Help = "Use this to execute aplications in sandbox";
+            Help = "Executes scripts and installs aplications in sandbox";
         }
 
         public string Name { get; }

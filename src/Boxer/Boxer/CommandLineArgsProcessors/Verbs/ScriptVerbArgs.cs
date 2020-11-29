@@ -1,6 +1,7 @@
 ﻿using Boxer.Args;
 using Boxer.Args.ScriptArgs;
 using Boxer.Args.SharedArgs;
+using Boxer.Args.Verbs;
 using ScoopBox.Scripts;
 using ScoopBox.Scripts.Materialized;
 using ScoopBox.Scripts.PackageManagers.Chocolatey;
@@ -82,17 +83,22 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
 
         private void ProcessHelp(string args)
         {
+            var command = new ScriptVerb();
             IEnumerable<IArg> allArgs = _argProcessor.Keys.Where(k => !string.IsNullOrWhiteSpace(k.Help));
             StringBuilder helpBuilder = new StringBuilder();
+            helpBuilder.AppendLine("COMMAND");
+            helpBuilder.AppendLine($"  { command.Name } - {command.Help}");
+            helpBuilder.AppendLine();
+
             foreach (var arg in allArgs)
             {
                 if (string.IsNullOrEmpty(arg.ShortName))
                 {
-                    helpBuilder.AppendLine($"      {arg.LongName} {arg.Help}");
+                    helpBuilder.AppendLine($"     {arg.LongName} - {arg.Help}");
                 }
                 else
                 {
-                    helpBuilder.AppendLine($"  {arg.ShortName}, {arg.LongName} {arg.Help}");
+                    helpBuilder.AppendLine($" {arg.ShortName}, {arg.LongName} - {arg.Help}");
                 }
             }
 
