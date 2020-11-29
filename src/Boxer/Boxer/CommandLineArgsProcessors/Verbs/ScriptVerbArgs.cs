@@ -75,5 +75,10 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
             string[] scripts = literalScripts.Split(";", StringSplitOptions.RemoveEmptyEntries);
             _scripts.Add(new LiteralScript(scripts));
         }
+
+        private void ProcessHelp(string args)
+        {
+            List<string> help = _argProcessor.Keys.Where(k => !string.IsNullOrWhiteSpace(k.Help)).Select(k => k.Help).ToList();
+        }
     }
 }

@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Boxer.Args
 {
-    public class VerbProcessor : Dictionary<IArg, Action<Stack<string>>>
+    public class VerbProcessor : Dictionary<IVerb, Action<Stack<string>>>
     {
         public Action<Stack<string>> this[string key]
         {
             get
             {
-                var dictionaryKey = Keys.FirstOrDefault(k => k.LongName == key || k.ShortName == key);
+                var dictionaryKey = Keys.FirstOrDefault(k => k.Name == key);
                 return dictionaryKey == null ? null : base[dictionaryKey];
             }
         }

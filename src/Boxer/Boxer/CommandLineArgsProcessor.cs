@@ -1,5 +1,5 @@
 ﻿using Boxer.Args;
-using Boxer.Args.VerbArgs;
+using Boxer.Args.Verbs;
 using Boxer.CommandLineArgsProcessors.Verbs;
 using System;
 using System.Collections.Generic;
@@ -15,9 +15,9 @@ namespace Boxer
         {
             _verbFactory = new VerbProcessor()
             {
-                { new ScriptArg(), arg => new ScriptVerbArgs().Process(arg) },
-                { new ConfigArg(), arg => new ConfigVerbArgs().Process(arg) },
-                { new HelpArg(), arg => new HelpVerbArgs().Process(arg) },
+                { new ScriptVerb(), arg => new ScriptVerbArgs().Process(arg) },
+                { new ConfigVerb(), arg => new ConfigVerbArgs().Process(arg) },
+                { new HelpVerb(), arg => new HelpVerbArgs().Process(arg) },
             };
         }
 
