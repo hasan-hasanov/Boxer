@@ -1,4 +1,5 @@
 ﻿using Boxer.Args.Factories;
+using Boxer.Args.SharedArgs.Parsers;
 using Boxer.Handlers;
 using Boxer.Handlers.Sandbox;
 using ScoopBox.Scripts;
@@ -33,9 +34,9 @@ namespace Boxer.Args.Verbs.Parsers
                     throw new ArgumentException("Unrecognized argument!", currentArgument);
                 }
 
-                if (parser is HelpVerbParser)
+                if (parser is HelpArgParser)
                 {
-                    parser.Parse(null);
+                    parser.Parse("Boxer.Args.ScriptArgs.IScriptArg;Boxer.Args.Verbs.ScriptVerb");
                     return;
                 }
 

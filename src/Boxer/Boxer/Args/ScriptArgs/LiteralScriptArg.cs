@@ -1,6 +1,6 @@
 ﻿namespace Boxer.Args.ScriptArgs
 {
-    public class LiteralScriptArg : IArg
+    public class LiteralScriptArg : IScriptArg
     {
         public LiteralScriptArg()
         {

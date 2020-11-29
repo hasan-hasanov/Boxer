@@ -20,9 +20,11 @@ namespace Boxer.Parser
         public async Task Parse(string[] args)
         {
             IVerbParser parser = new HelpVerbParser();
+            Stack<string> cliArgs = new Stack<string>();
+
             if (args.Any())
             {
-                Stack<string> cliArgs = new Stack<string>(args.Reverse());
+                cliArgs = new Stack<string>(args.Reverse());
                 string verb = cliArgs.Pop();
 
                 parser = _verbParserFactory[verb];
@@ -32,7 +34,7 @@ namespace Boxer.Parser
                 }
             }
 
-            await parser.Parse(null);
+            await parser.Parse(cliArgs);
         }
     }
 }

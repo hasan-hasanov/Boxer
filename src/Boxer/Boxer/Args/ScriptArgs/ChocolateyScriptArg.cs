@@ -1,6 +1,6 @@
 ﻿namespace Boxer.Args.ScriptArgs
 {
-    public class ChocolateyScriptArg : IArg
+    public class ChocolateyScriptArg : IScriptArg
     {
         public ChocolateyScriptArg()
         {
