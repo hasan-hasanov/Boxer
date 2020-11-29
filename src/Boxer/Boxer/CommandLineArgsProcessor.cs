@@ -15,9 +15,9 @@ namespace Boxer
         {
             _verbFactory = new VerbProcessor()
             {
-                { new ScriptVerb(), arg => new ScriptVerbArgs().Process(arg) },
-                { new ConfigVerb(), arg => new ConfigVerbArgs().Process(arg) },
-                { new HelpVerb(), arg => new HelpVerbArgs().Process(arg) },
+                { new ScriptVerb(), async arg => await new ScriptVerbArgs().Process(arg) },
+                { new ConfigVerb(), async arg => await new ConfigVerbArgs().Process(arg) },
+                { new HelpVerb(), async arg => await new HelpVerbArgs().Process(arg) },
             };
         }
 

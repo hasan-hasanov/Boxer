@@ -2,6 +2,9 @@
 using Boxer.Args.ScriptArgs;
 using Boxer.Args.SharedArgs;
 using Boxer.Args.Verbs;
+using Boxer.Handlers;
+using Boxer.Handlers.Sandbox;
+using ScoopBox;
 using ScoopBox.Scripts;
 using ScoopBox.Scripts.Materialized;
 using ScoopBox.Scripts.PackageManagers.Chocolatey;
@@ -21,9 +24,11 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
     {
         private readonly List<IScript> _scripts;
         private readonly ArgProcessor _argProcessor;
+        private readonly IHandler<SandboxRequest> _sandboxHandler;
 
         public ScriptVerbArgs()
         {
+            _sandboxHandler = new SandboxHandler(new Sandbox());
             _scripts = new List<IScript>();
 
             _argProcessor = new ArgProcessor()
@@ -36,7 +41,7 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
             };
         }
 
-        public Task Process(Stack<string> args)
+        public async Task Process(Stack<string> args)
         {
             while (args.Count > 0)
             {
@@ -52,7 +57,7 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
                 argProcessor.Invoke(argument);
             }
 
-            return Task.CompletedTask;
+            await _sandboxHandler.HandleAsync(new SandboxRequest(_scripts));
         }
 
         private void ProcessExternalScript(string fileScriptArgs)
