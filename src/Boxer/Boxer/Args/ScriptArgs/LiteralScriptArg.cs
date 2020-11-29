@@ -6,9 +6,7 @@
         {
             ShortName = "-s";
             LongName = "--literal-script";
-
-            // TODO: Improve help for the parameter
-            Help = "Represents a single powershell command.";
+            Help = "Single powershell command.";
         }
 
         public string ShortName { get; }

@@ -5,9 +5,7 @@
         public ScoopScriptArg()
         {
             LongName = "--scoop";
-
-
-            Help = "The applications that will be installed using the Scoop package manager. Applications should be separated using a comma (,).";
+            Help = "Applications that will be installed with Scoop, should be separated by comma (,).";
         }
 
         public string ShortName { get; }

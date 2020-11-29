@@ -5,9 +5,7 @@
         public ChocolateyScriptArg()
         {
             LongName = "--chocolatey";
-
-
-            Help = "The applications that will be installed using the Chocolatey package manager. Applications should be separated using a comma (,).";
+            Help = "Applications that will be installed with Chocolatey, should be separated by comma (,).";
         }
 
         public string ShortName { get; }

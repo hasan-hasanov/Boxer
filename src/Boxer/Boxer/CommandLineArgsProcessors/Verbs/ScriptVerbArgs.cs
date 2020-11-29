@@ -1,5 +1,6 @@
 ﻿using Boxer.Args;
 using Boxer.Args.ScriptArgs;
+using Boxer.Args.SharedArgs;
 using ScoopBox.Scripts;
 using ScoopBox.Scripts.Materialized;
 using ScoopBox.Scripts.PackageManagers.Chocolatey;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Boxer.CommandLineArgsProcessors.Verbs
@@ -25,10 +27,11 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
 
             _argProcessor = new ArgProcessor()
             {
-                    { new FileScriptArg(), arg => ProcessExternalScript(arg) },
-                    { new ChocolateyScriptArg(), arg =>  ProcessChocolateyScript(arg)},
-                    { new ScoopScriptArg(), arg =>  ProcessScoopScript(arg)},
-                    { new LiteralScriptArg(), arg =>  ProcessLiteralScript(arg)}
+                { new FileScriptArg(), arg => ProcessExternalScript(arg) },
+                { new ChocolateyScriptArg(), arg => ProcessChocolateyScript(arg)},
+                { new ScoopScriptArg(), arg => ProcessScoopScript(arg)},
+                { new LiteralScriptArg(), arg => ProcessLiteralScript(arg)},
+                { new HelpArg(), arg => ProcessHelp(arg)}
             };
         }
 
@@ -44,7 +47,8 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
                     throw new ArgumentException("Unrecognized argument!", currentArgument);
                 }
 
-                argProcessor.Invoke(args.Pop());
+                string argument = args.Count > 0 ? args.Pop() : string.Empty;
+                argProcessor.Invoke(argument);
             }
 
             return Task.CompletedTask;
@@ -78,7 +82,21 @@ namespace Boxer.CommandLineArgsProcessors.Verbs
 
         private void ProcessHelp(string args)
         {
-            List<string> help = _argProcessor.Keys.Where(k => !string.IsNullOrWhiteSpace(k.Help)).Select(k => k.Help).ToList();
+            IEnumerable<IArg> allArgs = _argProcessor.Keys.Where(k => !string.IsNullOrWhiteSpace(k.Help));
+            StringBuilder helpBuilder = new StringBuilder();
+            foreach (var arg in allArgs)
+            {
+                if (string.IsNullOrEmpty(arg.ShortName))
+                {
+                    helpBuilder.AppendLine($"      {arg.LongName} {arg.Help}");
+                }
+                else
+                {
+                    helpBuilder.AppendLine($"  {arg.ShortName}, {arg.LongName} {arg.Help}");
+                }
+            }
+
+            Console.WriteLine(helpBuilder.ToString());
         }
     }
 }
