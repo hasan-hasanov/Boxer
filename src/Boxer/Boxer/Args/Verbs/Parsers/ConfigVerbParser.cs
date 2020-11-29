@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Boxer.CommandLineArgsProcessors.Verbs
+namespace Boxer.Args.Verbs.Parsers
 {
-    public class HelpVerbArgs : IVerbProcessor
+    public class ConfigVerbParser : IVerbParser
     {
-        public Task Process(Stack<string> args)
+        public Task Parse(Stack<string> args)
         {
             throw new System.NotImplementedException();
         }

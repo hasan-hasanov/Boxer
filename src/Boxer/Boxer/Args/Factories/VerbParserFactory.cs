@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Boxer.Args
+namespace Boxer.Args.Factories
 {
-    public class VerbProcessor : Dictionary<IVerb, Action<Stack<string>>>
+    public class VerbParserFactory : Dictionary<IVerb, IVerbParser>, IVerbParserFactory
     {
-        public Action<Stack<string>> this[string key]
+        public IVerbParser this[string key]
         {
             get
             {
