@@ -1,4 +1,4 @@
-﻿namespace Boxer.Args.DefaultArgs
+﻿namespace Boxer.Args.ScriptArgs
 {
     public class LiteralScriptArg : IArg
     {

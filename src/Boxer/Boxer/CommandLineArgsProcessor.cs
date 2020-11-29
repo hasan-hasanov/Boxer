@@ -1,4 +1,5 @@
-﻿using Boxer.CommandLineArgsProcessors;
+﻿using Boxer.Args;
+using Boxer.Args.VerbArgs;
 using Boxer.CommandLineArgsProcessors.Verbs;
 using System;
 using System.Collections.Generic;
@@ -8,39 +9,30 @@ namespace Boxer
 {
     public static class CommandLineArgsProcessor
     {
-        private const string configVerb = "CONFIG";
-        private const string defaultVerb = "";
-
-        private static readonly IDictionary<string, IVerbProcessor> _verbFactory;
-
-        private static IVerbProcessor _verbProcessor;
+        private static readonly VerbProcessor _verbFactory;
 
         static CommandLineArgsProcessor()
         {
-            _verbFactory = new Dictionary<string, IVerbProcessor>()
+            _verbFactory = new VerbProcessor()
             {
-                { string.Empty, new DefaultVerbArgs() },
-                { configVerb, new ConfigVerbArgs() },
+                { new ScriptArg(), arg => new ScriptVerbArgs().Process(arg) },
+                { new ConfigArg(), arg => new ConfigVerbArgs().Process(arg) },
+                { new HelpArg(), arg => new HelpVerbArgs().Process(arg) },
             };
         }
 
         public static void Parse(string[] args)
         {
             Stack<string> cliArgs = new Stack<string>(args.Reverse());
-
             string verb = cliArgs.Pop();
-            switch (verb.ToUpper())
+
+            var verbProcessor = _verbFactory[verb];
+            if (verbProcessor == null)
             {
-                case configVerb:
-                    _verbProcessor = _verbFactory[configVerb];
-                    break;
-                default:
-                    cliArgs.Push(verb);
-                    _verbProcessor = _verbFactory[defaultVerb];
-                    break;
+                throw new ArgumentException("Unrecognized verb!", nameof(verb));
             }
 
-            _verbProcessor.Process(cliArgs);
+            verbProcessor.Invoke(cliArgs);
         }
     }
 }
