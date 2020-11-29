@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Boxer.CommandLineArgs.Args
+namespace Boxer.Args
 {
     public class ArgProcessor : Dictionary<IArg, Action<string>>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Boxer.CommandLineArgs.CommandLineArgsProcessors.Verbs
+namespace Boxer.CommandLineArgsProcessors.Verbs
 {
     public class ConfigVerbArgs : IVerbProcessor
     {

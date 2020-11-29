@@ -1,4 +1,4 @@
-﻿namespace Boxer.CommandLineArgs.Args.DefaultArgs
+﻿namespace Boxer.Args.DefaultArgs
 {
     public class ChocolateyScriptArg : IArg
     {

@@ -1,5 +1,4 @@
-﻿using Boxer.CommandLineArgs.Args;
-using Boxer.CommandLineArgs.Args.DefaultArgs;
+﻿using Boxer.Args;
 using ScoopBox.Scripts;
 using ScoopBox.Scripts.Materialized;
 using ScoopBox.Scripts.PackageManagers.Chocolatey;
@@ -12,7 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Boxer.CommandLineArgs.CommandLineArgsProcessors.Verbs
+namespace Boxer.CommandLineArgsProcessors.Verbs
 {
     public class DefaultVerbArgs : IVerbProcessor
     {

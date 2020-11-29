@@ -1,6 +1,4 @@
-﻿using Boxer.CommandLineArgs;
-
-namespace Boxer
+﻿namespace Boxer
 {
     class Program
     {

@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandLineArgs\Args\ConfigArgs\" />
+    <Folder Include="Args\ConfigArgs\" />
   </ItemGroup>
 
 </Project>

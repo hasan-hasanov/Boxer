@@ -1,10 +1,10 @@
-﻿using Boxer.CommandLineArgs.CommandLineArgsProcessors;
-using Boxer.CommandLineArgs.CommandLineArgsProcessors.Verbs;
+﻿using Boxer.CommandLineArgsProcessors;
+using Boxer.CommandLineArgsProcessors.Verbs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Boxer.CommandLineArgs
+namespace Boxer
 {
     public static class CommandLineArgsProcessor
     {
@@ -20,7 +20,7 @@ namespace Boxer.CommandLineArgs
             _verbFactory = new Dictionary<string, IVerbProcessor>()
             {
                 { string.Empty, new DefaultVerbArgs() },
-                { configVerb, new DefaultVerbArgs() },
+                { configVerb, new ConfigVerbArgs() },
             };
         }
 

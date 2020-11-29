@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Boxer.CommandLineArgs.CommandLineArgsProcessors
+namespace Boxer.CommandLineArgsProcessors
 {
     public interface IVerbProcessor
     {

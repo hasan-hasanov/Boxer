@@ -1,4 +1,4 @@
-﻿namespace Boxer.CommandLineArgs.Args
+﻿namespace Boxer.Args
 {
     public interface IArg
     {
