@@ -9,4 +9,8 @@
     <PackageReference Include="ScoopBox" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CommandLineArgs\Args\ConfigArgs\" />
+  </ItemGroup>
+
 </Project>
