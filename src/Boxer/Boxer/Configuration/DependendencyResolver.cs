@@ -24,6 +24,7 @@ namespace Boxer.Configuration
                 {
                     { new ScriptVerb(), new ScriptVerbParser(serviceProvider.GetService<IArgParserFactory>(), serviceProvider.GetService<IHandler<SandboxRequest>>()) },
                     { new ConfigVerb(), new ConfigVerbParser() },
+                    { new VersionVerb(), new VersionVerbParser(serviceProvider.GetService<IArgParserFactory>()) },
                     { new HelpVerb(), new HelpVerbParser() },
                 };
             });
