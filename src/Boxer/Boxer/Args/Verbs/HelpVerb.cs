@@ -4,10 +4,10 @@
     {
         public HelpVerb()
         {
-            Name = "help";
+            Name = new[] { "help" };
         }
 
-        public string Name { get; }
+        public string[] Name { get; }
 
         public string Help { get; }
     }

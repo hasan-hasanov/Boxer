@@ -4,13 +4,13 @@
     {
         public ConfigVerb()
         {
-            Name = "config";
+            Name = new[] { "config" };
 
             // TODO: Improve help
             Help = "Use this for configuration";
         }
 
-        public string Name { get; }
+        public string[] Name { get; }
 
         public string Help { get; }
     }

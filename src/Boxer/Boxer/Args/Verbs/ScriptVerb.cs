@@ -4,11 +4,11 @@
     {
         public ScriptVerb()
         {
-            Name = "script";
+            Name = new[] { "script" };
             Help = "Executes scripts and installs aplications in sandbox.";
         }
 
-        public string Name { get; }
+        public string[] Name { get; }
 
         public string Help { get; }
     }

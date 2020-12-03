@@ -9,7 +9,7 @@ namespace Boxer.Args.Factories
         {
             get
             {
-                var dictionaryKey = Keys.FirstOrDefault(k => k.Name == key);
+                var dictionaryKey = Keys.FirstOrDefault(k => k.Name.Contains(key));
                 return dictionaryKey == null ? null : base[dictionaryKey];
             }
         }
