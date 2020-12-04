@@ -24,22 +24,30 @@ namespace Boxer.DIC
             {
                 return new VerbParserFactory()
                 {
-                    { new ScriptVerb(), new ScriptVerbParser(serviceProvider.GetService<IArgParserFactory>(), serviceProvider.GetService<IHandler<SandboxRequest>>()) },
-                    { new ConfigVerb(), new ConfigVerbParser(serviceProvider.GetService<IArgParserFactory>(), serviceProvider.GetService<IHandler<SandboxRequest>>()) },
-                    { new VersionVerb(), new VersionVerbParser(serviceProvider.GetService<IArgParserFactory>()) },
+                    { new ScriptVerb(), new ScriptVerbParser(new ArgParserFactory()
+                        {
+                            { new FileScriptArg(), new FileScriptArgParser() },
+                            { new ChocolateyScriptArg(), new ChocolateyArgParser()},
+                            { new ScoopScriptArg(), new ScoopScriptArgsParser()},
+                            { new LiteralScriptArg(), new LiteralScriptArgParser()},
+                            { new HelpArg(), new HelpArgParser()}
+                        },
+                        serviceProvider.GetService<IHandler<SandboxRequest>>()) },
+
+                    { new ConfigVerb(), new ConfigVerbParser(new ArgParserFactory()
+                        {
+                            { new ConfigArg(), new ConfigArgParser()},
+                            { new HelpArg(), new HelpArgParser()}
+                        },
+                        serviceProvider.GetService<IHandler<SandboxRequest>>()) },
+
+                    { new VersionVerb(), new VersionVerbParser(new ArgParserFactory()
+                        {
+                            { new HelpArg(), new HelpArgParser()}
+                        })
+                    },
+
                     { new HelpVerb(), new HelpVerbParser() },
-                };
-            });
-            serviceCollection.AddScoped<IArgParserFactory>(serviceProvider =>
-            {
-                return new ArgParserFactory()
-                {
-                    { new FileScriptArg(), new FileScriptArgParser() },
-                    { new ChocolateyScriptArg(), new ChocolateyArgParser()},
-                    { new ScoopScriptArg(), new ScoopScriptArgsParser()},
-                    { new LiteralScriptArg(), new LiteralScriptArgParser()},
-                    { new ConfigArg(), new ConfigArgParser()},
-                    { new HelpArg(), new HelpArgParser()}
                 };
             });
             serviceCollection.AddScoped<IHandler<SandboxRequest>, SandboxHandler>();
