@@ -13,8 +13,4 @@
     <PackageReference Include="ScoopBox" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Args\ConfigArgs\" />
-  </ItemGroup>
-
 </Project>

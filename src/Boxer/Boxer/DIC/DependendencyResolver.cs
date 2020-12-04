@@ -11,7 +11,7 @@ using Boxer.Parser;
 using Microsoft.Extensions.DependencyInjection;
 using ScoopBox;
 
-namespace Boxer.Configuration
+namespace Boxer.DIC
 {
     public static class DependendencyResolver
     {
@@ -23,7 +23,7 @@ namespace Boxer.Configuration
                 return new VerbParserFactory()
                 {
                     { new ScriptVerb(), new ScriptVerbParser(serviceProvider.GetService<IArgParserFactory>(), serviceProvider.GetService<IHandler<SandboxRequest>>()) },
-                    { new ConfigVerb(), new ConfigVerbParser() },
+                    { new ConfigVerb(), new ConfigVerbParser(serviceProvider.GetService<IArgParserFactory>(), serviceProvider.GetService<IHandler<SandboxRequest>>()) },
                     { new VersionVerb(), new VersionVerbParser(serviceProvider.GetService<IArgParserFactory>()) },
                     { new HelpVerb(), new HelpVerbParser() },
                 };
