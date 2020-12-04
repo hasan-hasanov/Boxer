@@ -10,11 +10,6 @@ namespace Boxer
     {
         static async Task Main(string[] args)
         {
-            // args = new string[] { "script", "-f", @"C:/test.ps1", "--scoop", "git, curl, fiddler", "-s", "Start-Process .", "--chocolatey", "vscode", "-s", "start-process facebook.com", "-f", @"C:/test2.ps1" };
-            // args = new string[] { "script", "--scoop", "git, curl, fiddler", "--chocolatey", "vscode" };
-            // args = new string[] { "version", "-h" };
-            args = new string[] { "config", "-c", @"C:\Users\Hasan Hasanov\AppData\Local\Temp\Scripts\config.json" };
-
             IServiceProvider serviceProvider = new ServiceCollection()
                .RegisterConcreteTypes()
                .BuildServiceProvider();
