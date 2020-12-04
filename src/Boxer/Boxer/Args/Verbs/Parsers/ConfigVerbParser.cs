@@ -4,6 +4,7 @@ using Boxer.Exceptions;
 using Boxer.Handlers;
 using Boxer.Handlers.Sandbox;
 using ScoopBox.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,11 @@ namespace Boxer.Args.Verbs.Parsers
                 {
                     argParser.Parse("Boxer.Args.ConfigArgs.IConfigArg;Boxer.Args.Verbs.ConfigVerb");
                     return;
+                }
+
+                if (args.Count == 0)
+                {
+                    throw new ArgNotFoundException($"Parameter for argument '{currentArgument}' not found!{Environment.NewLine}");
                 }
 
                 _scripts.AddRange(argParser.Parse(args.Pop()));

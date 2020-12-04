@@ -1,11 +1,11 @@
 ﻿namespace Boxer.Args.ConfigArgs
 {
-    public class ConfigArg : IConfigArg
+    public class FileArg : IConfigArg
     {
-        public ConfigArg()
+        public FileArg()
         {
-            ShortName = "-c";
-            LongName = "--config-file";
+            ShortName = "-f";
+            LongName = "--file";
 
             Help = "Path to the config file.";
         }

@@ -36,7 +36,7 @@ namespace Boxer.DIC
 
                     { new ConfigVerb(), new ConfigVerbParser(new ArgParserFactory()
                         {
-                            { new ConfigArg(), new ConfigArgParser()},
+                            { new FileArg(), new FileArgParser()},
                             { new HelpArg(), new HelpArgParser()}
                         },
                         serviceProvider.GetService<IHandler<SandboxRequest>>()) },

@@ -51,6 +51,11 @@ namespace Boxer.Args.Verbs.Parsers
                     return;
                 }
 
+                if (args.Count == 0)
+                {
+                    throw new ArgNotFoundException($"Parameter for argument '{currentArgument}' not found!{Environment.NewLine}");
+                }
+
                 _scripts.AddRange(parser.Parse(args.Pop()));
             }
 
