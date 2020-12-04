@@ -1,10 +1,11 @@
 ﻿using Boxer.Args.Factories;
 using Boxer.Args.SharedArgs.Parsers;
+using Boxer.Exceptions;
 using Boxer.Handlers;
 using Boxer.Handlers.Sandbox;
 using ScoopBox.Scripts;
-using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Boxer.Args.Verbs.Parsers
@@ -24,6 +25,11 @@ namespace Boxer.Args.Verbs.Parsers
 
         public async Task Parse(Stack<string> args)
         {
+            if (args.Count == 0)
+            {
+                args.Push("-h");
+            }
+
             while (args.Count > 0)
             {
                 string currentArgument = args.Pop();
@@ -31,7 +37,12 @@ namespace Boxer.Args.Verbs.Parsers
 
                 if (parser == null)
                 {
-                    throw new ArgumentException("Unrecognized argument!", currentArgument);
+                    StringBuilder helpBuilder = new StringBuilder()
+                        .AppendLine($"Argument '{currentArgument}' is not recognized! Try:")
+                        .AppendLine()
+                        .AppendLine("    boxer script --help");
+
+                    throw new ArgNotFoundException(helpBuilder.ToString());
                 }
 
                 if (parser is HelpArgParser)

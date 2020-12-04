@@ -22,7 +22,7 @@ namespace Boxer.Args.SharedArgs.Parsers
 
             StringBuilder helpBuilder = new StringBuilder();
             helpBuilder.AppendLine("COMMAND");
-            helpBuilder.AppendLine($"  { commandVerb.Name } - {commandVerb.Help}");
+            helpBuilder.AppendLine($"  { commandVerb.Name.First() } - {commandVerb.Help}");
             helpBuilder.AppendLine();
 
             foreach (var commandArg in commandArgs)

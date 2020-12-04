@@ -1,5 +1,6 @@
 ﻿using Boxer.Args.Factories;
 using Boxer.Args.SharedArgs.Parsers;
+using Boxer.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,15 @@ namespace Boxer.Args.Verbs.Parsers
                     Console.WriteLine(helpBuilder);
 
                     return Task.CompletedTask;
+                }
+                else
+                {
+                    StringBuilder helpBuilder = new StringBuilder()
+                       .AppendLine($"Argument '{currentArgument}' is not recognized! Try:")
+                       .AppendLine()
+                       .AppendLine("    boxer version --help");
+
+                    throw new ArgNotFoundException(helpBuilder.ToString());
                 }
             }
 

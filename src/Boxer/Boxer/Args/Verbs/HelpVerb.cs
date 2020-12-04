@@ -4,7 +4,7 @@
     {
         public HelpVerb()
         {
-            Name = new[] { "help" };
+            Name = new[] { "help", "--help", "-h" };
         }
 
         public string[] Name { get; }

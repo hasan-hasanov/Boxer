@@ -1,9 +1,11 @@
 ﻿using Boxer.Args;
 using Boxer.Args.Factories;
 using Boxer.Args.Verbs.Parsers;
+using Boxer.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Boxer.Parser
@@ -30,7 +32,12 @@ namespace Boxer.Parser
                 parser = _verbParserFactory[verb];
                 if (parser == null)
                 {
-                    throw new ArgumentException("Unrecognized verb!", nameof(verb));
+                    StringBuilder helpBuilder = new StringBuilder()
+                        .AppendLine($"Command '{verb}' is not recognized! Try:")
+                        .AppendLine()
+                        .AppendLine("    boxer help");
+
+                    throw new VerbNotFoundException(helpBuilder.ToString());
                 }
             }
 
