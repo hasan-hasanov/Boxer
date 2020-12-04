@@ -4,6 +4,7 @@ using Boxer.Exceptions;
 using Boxer.Handlers;
 using Boxer.Handlers.Sandbox;
 using ScoopBox.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
