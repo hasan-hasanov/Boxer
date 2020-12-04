@@ -13,7 +13,7 @@ namespace Boxer
             // args = new string[] { "script", "-f", @"C:/test.ps1", "--scoop", "git, curl, fiddler", "-s", "Start-Process .", "--chocolatey", "vscode", "-s", "start-process facebook.com", "-f", @"C:/test2.ps1" };
             // args = new string[] { "script", "--scoop", "git, curl, fiddler", "--chocolatey", "vscode" };
             // args = new string[] { "version", "-h" };
-            args = new string[] { "config", "-f", @"C:\Users\Hasan Hasanov\AppData\Local\Temp\Scripts\config.json" };
+            args = new string[] { "config", "-c", @"C:\Users\Hasan Hasanov\AppData\Local\Temp\Scripts\config.json" };
 
             IServiceProvider serviceProvider = new ServiceCollection()
                .RegisterConcreteTypes()

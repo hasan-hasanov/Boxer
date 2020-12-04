@@ -1,4 +1,6 @@
-﻿using Boxer.Args.Factories;
+﻿using Boxer.Args.ConfigArgs;
+using Boxer.Args.ConfigArgs.Parsers;
+using Boxer.Args.Factories;
 using Boxer.Args.ScriptArgs;
 using Boxer.Args.ScriptArgs.Parsers;
 using Boxer.Args.SharedArgs;
@@ -36,6 +38,7 @@ namespace Boxer.DIC
                     { new ChocolateyScriptArg(), new ChocolateyArgParser()},
                     { new ScoopScriptArg(), new ScoopScriptArgsParser()},
                     { new LiteralScriptArg(), new LiteralScriptArgParser()},
+                    { new ConfigArg(), new ConfigArgParser()},
                     { new HelpArg(), new HelpArgParser()}
                 };
             });

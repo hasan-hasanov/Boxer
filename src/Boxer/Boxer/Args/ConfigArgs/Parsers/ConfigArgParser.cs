@@ -13,12 +13,12 @@ using System.Text.Json;
 
 namespace Boxer.Args.ConfigArgs.Parsers
 {
-    public class FileArgParser : IArgParser
+    public class ConfigArgParser : IArgParser
     {
         private readonly Dictionary<string, Func<Configuration, List<IScript>>> _configurationFactory;
         private readonly Func<string, string> _readAllText;
 
-        public FileArgParser()
+        public ConfigArgParser()
             : this(
                   new Dictionary<string, Func<Configuration, List<IScript>>>()
                   {
@@ -31,7 +31,7 @@ namespace Boxer.Args.ConfigArgs.Parsers
         {
         }
 
-        internal FileArgParser(
+        internal ConfigArgParser(
             Dictionary<string, Func<Configuration, List<IScript>>> configurationFactory,
             Func<string, string> readAllText)
         {
