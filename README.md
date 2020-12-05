@@ -68,6 +68,7 @@ boxer script -f "C:/PrepareSandbox.ps1" --chocolatey "git,vscode" -f "C:/CloneRe
 * **config** - Launch Windows Sandbox using configuration file.
   * **-f, --file** - Path to the config file. Only json configuration is supported.
 * **version** - Displays the version of the project in the format: **MAJOR.MINOR.BUILD.REVISION**
+* **help** - Displays help for commands and arguments.
 
 ### Config
 The configuration should be in the following structure:
