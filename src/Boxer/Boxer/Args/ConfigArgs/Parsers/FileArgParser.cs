@@ -1,10 +1,10 @@
 ﻿using Boxer.Models;
+using Boxer.Utils;
 using ScoopBox.Scripts;
 using ScoopBox.Scripts.Materialized;
 using ScoopBox.Scripts.PackageManagers.Chocolatey;
 using ScoopBox.Scripts.PackageManagers.Scoop;
 using ScoopBox.Scripts.UnMaterialized;
-using ScoopBox.Translators.Powershell;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,7 +22,7 @@ namespace Boxer.Args.ConfigArgs.Parsers
             : this(
                   new Dictionary<string, Func<Configuration, List<IScript>>>()
                   {
-                      { "FILE", config => new List<IScript>(config.Args.Select(r => new ExternalScript(new FileInfo(r), new PowershellTranslator()))) },
+                      { "FILE", config => new List<IScript>(config.Args.Select(r => new ExternalScript(new FileInfo(r), TranslatorUtils.GetTranslatorByExtensionType(r)))) },
                       { "CHOCOLATEY", config => new List<IScript>() { new ChocolateyPackageManagerScript(config.Args) } },
                       { "SCOOP", config => new List<IScript>() { new ScoopPackageManagerScript(config.Args) } },
                       { "LITERAL", config => new List<IScript>(config.Args.Select(r => new LiteralScript(config.Args))) },

@@ -26,6 +26,12 @@ namespace Boxer
             {
                 Console.WriteLine(ex.Message);
             }
+            catch (NotSupportedFileTypeException ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                Console.WriteLine($"{Environment.NewLine}Supported extensions are: .ps1, .bat, .cmd");
+            }
             catch (Exception ex)
             {
                 Console.WriteLine($"{ex.Message}{Environment.NewLine}");

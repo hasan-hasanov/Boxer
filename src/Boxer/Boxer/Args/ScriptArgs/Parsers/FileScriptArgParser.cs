@@ -1,6 +1,6 @@
-﻿using ScoopBox.Scripts;
+﻿using Boxer.Utils;
+using ScoopBox.Scripts;
 using ScoopBox.Scripts.Materialized;
-using ScoopBox.Translators.Powershell;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,8 +15,7 @@ namespace Boxer.Args.ScriptArgs.Parsers
             List<IScript> scripts = new List<IScript>();
             string[] filePaths = arg.Split(",", StringSplitOptions.RemoveEmptyEntries);
 
-            // TODO: Determine automatically the extension of the script.
-            List<ExternalScript> fileScripts = filePaths.Select(f => new ExternalScript(new FileInfo(f), new PowershellTranslator())).ToList();
+            List<ExternalScript> fileScripts = filePaths.Select(f => new ExternalScript(new FileInfo(f), TranslatorUtils.GetTranslatorByExtensionType(f))).ToList();
 
             scripts.AddRange(fileScripts);
             return scripts;
