@@ -31,7 +31,7 @@ namespace Boxer.Args.Verbs.Parsers
                     var commandVerb = new VersionVerb();
                     StringBuilder helpBuilder = new StringBuilder()
                         .AppendLine("COMMAND")
-                        .AppendLine($"  { commandVerb.Name.First() } - {commandVerb.Help}");
+                        .AppendLine($"  {commandVerb.Name.First()} - {commandVerb.Help}");
 
                     Console.WriteLine(helpBuilder);
 

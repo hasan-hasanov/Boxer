@@ -22,7 +22,7 @@ namespace Boxer
                 await parser.Parse(args);
             }
             catch (Exception ex)
-                when (ex is VerbNotFoundException || ex is ArgNotFoundException)
+                when (ex is VerbNotFoundException || ex is ArgNotFoundException || ex is ParamNotFoundException)
             {
                 Console.WriteLine(ex.Message);
             }
