@@ -16,9 +16,9 @@
 </p>
 
 <p align="center">
-  <a href="#more-about-windows-sandbox">More About Windows Sandbox</a> •
-  <a href="#how-scoopbox-works">How Boxer Works</a> •
-  <a href="#examples">Examples</a> •
+  <a href="#more-about-windows-sandbox">Windows Sandbox</a> •
+  <a href="#how-scoopbox-works">ScoopBox</a> •
+  <a href="#examples">Boxer</a> •
   <a href="#download">Download</a> •
   <a href="#contribute">Contribute</a>
 </p>
