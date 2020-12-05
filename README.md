@@ -97,16 +97,11 @@ Supported types in the schema:
  ```json
  [
    {
-      "args":[
-         "git",
-         "fiddler"
-      ],
+      "args":["git", "fiddler"],
       "type":"Chocolatey"
    },
    {
-      "args":[
-         "vscode"
-      ],
+      "args":["vscode"],
       "type":"Scoop"
    }
 ]
@@ -116,27 +111,19 @@ Supported types in the schema:
  ```json
  [
    {
-      "args":[
-         "C:/PrepareEnvironment.ps1",
-      ],
+      "args":["C:/PrepareEnvironment.ps1"],
       "type":"File"
    },
    {
-      "args":[
-         "vscode"
-      ],
+      "args":["vscode"],
       "type":"Scoop"
    },
    {
-      "args":[
-         "C:/Cleanup.ps1",
-      ],
+      "args":["C:/Cleanup.ps1"],
       "type":"File"
    },
    {
-     "args":[
-         "Start-Process -WindowStyle Hidden code .",
-      ],
+     "args":["Start-Process -WindowStyle Hidden code ."],
       "type":"Literal"
    }
 ]
