@@ -19,6 +19,7 @@
   <a href="#windows-sandbox">Windows Sandbox</a> •
   <a href="#scoopbox">ScoopBox</a> •
   <a href="#boxer">Boxer</a> •
+  <a href="#documentation">Documentation</a> •
   <a href="#download">Download</a> •
   <a href="#contribute">Contribute</a>
 </p>
@@ -56,7 +57,91 @@ Start Windows Sandbox with startup scripts and applications:
 ```
 boxer script -f "C:/PrepareSandbox.ps1" --chocolatey "git,vscode" -f "C:/CloneRepository.ps1;C:/PrepareDevEnvironment.ps1"
 ```
+## Documentation
+### Commands
 
+* **script** - Executes scripts and installs aplications in sandbox.
+  * **--chocolatey** - Applications that will be installed with Chocolatey, should be separated by comma (,).
+  * **--scoop** - Applications that will be installed with Scoop, should be separated by comma (,).
+  * **-f, --file-script** - Full path of the script file including the extension. Supported extensions are **.ps1**, **.bat**, **.cmd**
+  * **-s, --literal-script** - Single powershell command.
+* **config** - Launch Windows Sandbox using configuration file.
+  * **-f, --file** - Path to the config file. Only json configuration is supported.
+* **version** - Displays the version of the project in the format: **MAJOR.MINOR.BUILD.REVISION**
+
+### Config
+The configuration should be in the following structure:
+
+```json
+[
+   {
+      "args":[],
+      "type":""
+   }
+]
+```
+Supported types in the schema:
+* type: **File**
+  * **args:** - Full script file paths
+* type: **Chocolatey**
+  * **args:** - Applications to install using Chocolatey package manager
+* type: **Scoop**
+  * **args:** - Applications to install using Scoop package manager
+* type: **Literal**
+  * **args** - Powershell commands that will be executed
+  
+ **Here are some valid configuration files that you can use:**
+ 
+ Configuration that installs git and fiddler using Chocolatey and vscode using Scoop package managers:
+ 
+ ```json
+ [
+   {
+      "args":[
+         "git",
+         "fiddler"
+      ],
+      "type":"Chocolatey"
+   },
+   {
+      "args":[
+         "vscode"
+      ],
+      "type":"Scoop"
+   }
+]
+ ```
+ 
+ Configuration that runs **PrepareEnvironment.ps1** script. After the preparation installs vs code and cleans up all the resources. Latsly when everything is done starts vs code.
+ ```json
+ [
+   {
+      "args":[
+         "C:/PrepareEnvironment.ps1",
+      ],
+      "type":"File"
+   },
+   {
+      "args":[
+         "vscode"
+      ],
+      "type":"Scoop"
+   },
+   {
+      "args":[
+         "C:/Cleanup.ps1",
+      ],
+      "type":"File"
+   },
+   {
+     "args":[
+         "Start-Process -WindowStyle Hidden code .",
+      ],
+      "type":"Literal"
+   }
+]
+ ```
+ 
 
 ## Download
 
