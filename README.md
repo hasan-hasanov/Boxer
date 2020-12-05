@@ -34,8 +34,33 @@ Windows sandbox should be enabled before first use. [Check how here.](https://do
 _You can find more information about Windows Sandbox and ScoopBox in my [blog](https://hasan-hasanov.com/2020/11/25/scoopbox/)._
 
 ## Boxer
+Boxer is a cli tool that launches Windows Sandbox with preinstalled applications or execute scripts at startup. It takes full advantage of the [ScoopBox](https://github.com/hasan-hasanov/ScoopBox) library implementing and exposing all the functionalities to the end user.
+
+### Quick Start
+Start Windows Sandbox with predefined applications using Chocolatey:
+```
+boxer script --chocolatey "git,fiddler,vscode"
+```
+
+Start Windows Sandbox with predefined applications using Scoop:
+```
+boxer script --scoop "git,fiddler,vscode"
+```
+
+Start Windows Sandbox with startup scripts:
+```
+boxer script -f "C:/Script1.ps1; C:/Script2.ps1"
+```
+
+Start Windows Sandbox with startup scripts and applications:
+```
+boxer script -f "C:/PrepareSandbox.ps1" --chocolatey "git,vscode" -f "C:/CloneRepository.ps1;C:/PrepareDevEnvironment.ps1"
+```
+
 
 ## Download
+
+Coming soon as dotnet tool, chocolatey, scoop and winget
 
 ## Contribute
 
@@ -49,5 +74,5 @@ If you're unable to find an open issue addressing the problem, open a new one. B
 Open a new GitHub pull request with the patch.
 Ensure the PR description clearly describes the problem and solution. Include the relevant issue number if applicable.
 
-## Did you fix whitespace, format code, or make a purely cosmetic patch?
+### Did you fix whitespace, format code, or make a purely cosmetic patch?
 Open a new GitHub pull request with the patch.
