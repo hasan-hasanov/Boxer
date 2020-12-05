@@ -128,7 +128,7 @@ Supported types in the schema:
    }
 ]
  ```
- 
+**The order matters. All the scripts are ran in the order they are defined.**
 
 ## Download
 
