@@ -1,8 +1,8 @@
-﻿using ScoopBox.Translators;
+﻿using Boxer.Exceptions;
+using ScoopBox.Translators;
 using ScoopBox.Translators.Bat;
 using ScoopBox.Translators.Cmd;
 using ScoopBox.Translators.Powershell;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -30,7 +30,7 @@ namespace Boxer.Utils
                 return _translatorFactory[extension];
             }
 
-            throw new NotSupportedException($"File type {extension} not supported!");
+            throw new NotSupportedFileTypeException($"File type {extension} not supported!");
         }
     }
 }
