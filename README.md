@@ -108,7 +108,7 @@ Supported types in the schema:
 ]
  ```
  
- Configuration that runs **PrepareEnvironment.ps1** script. After the preparation installs vs code and cleans up all the resources. Latsly when everything is done starts vs code.
+ Configuration that runs **PrepareEnvironment.ps1** script. After the preparation installs vs code and cleans up all the resources. Latsly when everything is done starts notepad.
  ```json
  [
    {
@@ -124,7 +124,7 @@ Supported types in the schema:
       "type":"File"
    },
    {
-     "args":["Start-Process -WindowStyle Hidden code ."],
+     "args":["Start-Process 'C:\windows\system32\notepad.exe'"],
       "type":"Literal"
    }
 ]
