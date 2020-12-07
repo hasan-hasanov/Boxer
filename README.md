@@ -124,7 +124,7 @@ Supported types in the schema:
       "type":"File"
    },
    {
-     "args":["Start-Process 'C:\windows\system32\notepad.exe'"],
+     "args":["Start-Process 'C:\\windows\\system32\\notepad.exe'"],
       "type":"Literal"
    }
 ]
