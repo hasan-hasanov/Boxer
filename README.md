@@ -112,7 +112,7 @@ Supported types in the schema:
  ```json
  [
    {
-      "args":["C:/PrepareEnvironment.ps1"],
+      "args":["C:\\PrepareEnvironment.ps1"],
       "type":"File"
    },
    {
